@@ -1,9 +1,9 @@
-const length;
-const satisfied=false;
-const isLowerCase;
-const isUppercase;
-const isNumeric;
-const isSpecial_characters;
+var length;
+var satisfied=false;
+var isLowerCase;
+var isUppercase;
+var isNumeric;
+var isSpecial_characters;
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -73,25 +73,25 @@ console.log("satisfied " +satisfied)
 
 
 if (satisfied){
-  console.log(makeid(length));
+  // console.log(makeid(length));
 }
 
 }
 
-function makeid(length) {
-  var special ='!"#$%&()*+,-./:;<=>?@[\]^_`{|}~';
-  var lower   = 'abcdefghijklmnopqrstuvwxyz';
-  var upper ='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  var numeric ='0123456789';
+// function makeid(length) {
+//   var special ='!"#$%&()*+,-./:;<=>?@[\]^_`{|}~';
+//   var lower   = 'abcdefghijklmnopqrstuvwxyz';
+//   var upper ='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+//   var numeric ='0123456789';
 
-  var result           = '';
+//   var result           = '';
  
-  var charactersLength = characters.length;
+//   var charactersLength = characters.length;
 
-  for ( var i = 0; i < length; i++ ) {
-    result += characters.charAt(Math.floor(Math.random() * 
-charactersLength));
- }
- return result;
-}
+//   for ( var i = 0; i < length; i++ ) {
+//     result += characters.charAt(Math.floor(Math.random() * 
+// charactersLength));
+//  }
+//  return result;
+// }
 
