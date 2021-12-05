@@ -1,9 +1,15 @@
-var length;
+var inputlength;
 var satisfied=false;
-var isLowerCase;
-var isUppercase;
-var isNumeric;
-var isSpecial_characters;
+
+
+//defining the object with default settings
+var obj={
+  isLowerCase:false,
+  isUppercase:false,
+  isNumeric:false,
+  isSpecial_characters:false
+
+};
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -27,23 +33,23 @@ function generatePassword(){
 
     do
 {
- length=prompt("length of the password")
+ inputlength=prompt("length of the password")
 
-   if(!isNaN(length) && length >7 && length < 129)
+   if(!isNaN(inputlength) && inputlength >7 && inputlength < 129)
         break;  
    else
    {
         alert("Please choose length minimum 8  and maximun of 128")
    }     
-}while(length)
-console.log(length)
+}while(inputlength)
+console.log(inputlength)
 
 
 
 do {
 
 
-isLowerCase=confirm("Do you want to include lowercase?")
+isLowerCase = confirm("Do you want to include lowercase?")
 console.log("lowercase " + isLowerCase)
 
 isUppercase=confirm("Do you want to include uppercase?")
@@ -55,6 +61,8 @@ console.log("numeric " + isNumeric)
 
 isSpecial_characters=confirm("Do you want to include special characters?")
 console.log("special " + isSpecial_characters)
+
+
 
 if (isLowerCase || isUppercase || isNumeric || isSpecial_characters ){
   satisfied=true;
@@ -72,26 +80,45 @@ else{
 console.log("satisfied " +satisfied)
 
 
+var obj=
+{ isLowerCase,
+  isUppercase,
+  isNumeric,
+  isSpecial_characters};
+
 if (satisfied){
-  // console.log(makeid(length));
+  console.log("I am satisdfied")
+  console.log(makeid(inputlength,obj));
 }
 
 }
 
-// function makeid(length) {
-//   var special ='!"#$%&()*+,-./:;<=>?@[\]^_`{|}~';
-//   var lower   = 'abcdefghijklmnopqrstuvwxyz';
-//   var upper ='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-//   var numeric ='0123456789';
+function makeid(length,myObj) {
+  console.log(myObj)
+var chracters= ['!"#$%&()*+,-./:;<=>?@[\]^_`{|}~',
+'abcdefghijklmnopqrstuvwxyz',
+'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+'0123456789']
 
-//   var result           = '';
+  var joined;
+  
+//need to check here
+if (myObj.isLowerCase || myObj.isUppercase || myObj.isNumeric || myObj.isSpecial_characters){
+  
+  joined = chracters.join(',')
+  console.log("all")
+}
+
+
+
+  var result           = '';
  
-//   var charactersLength = characters.length;
+  var charactersLength = joined.length;
 
-//   for ( var i = 0; i < length; i++ ) {
-//     result += characters.charAt(Math.floor(Math.random() * 
-// charactersLength));
-//  }
-//  return result;
-// }
+  for ( var i = 0; i < length; i++ ) {
+    result += joined.charAt(Math.floor(Math.random() * 
+charactersLength));
+ }
+ return result;
+}
 
