@@ -1,8 +1,9 @@
+
+//defining   with default settings
 var inputlength;
 var satisfied=false;
+var lengthSatisfied=false;
 
-
-//defining the object with default settings
 var obj={
   isLowerCase:false,
   isUppercase:false,
@@ -28,27 +29,54 @@ generateBtn.addEventListener("click", writePassword);
 
 
 
+
+// generate password function
 function generatePassword(){
   
 
-    do
-{
- inputlength=prompt("length of the password")
+//     do
+// {
+//  inputlength=prompt("length of the password")
 
-   if(!isNaN(inputlength) && inputlength >7 && inputlength < 129)
-        break;  
-   else
-   {
-        alert("Please choose length minimum 8  and maximun of 128")
-   }     
-}while(inputlength)
-console.log(inputlength)
+
+//  if(!isNaN(inputlength) && inputlength > 7 && inputlength < 129 && inputlength !== null ){
+//   lengthSatisfied=true;
+//   continue;
+//  } 
+//  else{
+//   alert("Please choose length minimum 8  and maximun of 128")
+//   lengthSatisfied=false;
+//   break;
+//  }  
+
+// }
+
+// while(lengthSatisfied)
 
 
 
 do {
+  inputlength=prompt("length of the password")
+ if(!isNaN(inputlength) && inputlength > 7 && inputlength < 129 && inputlength !== null ){
+  lengthSatisfied=true;
+ 
+ } 
+ else{
+  alert("Please choose length minimum 8  and maximun of 128")
+  lengthSatisfied=false;
+
+ } 
 
 
+  } while (lengthSatisfied==false);
+
+
+
+console.log(inputlength)
+
+do {
+
+console.log("lengh satisfy is "+lengthSatisfied+ "check")
 isLowerCase = confirm("Do you want to include lowercase?")
 console.log("lowercase " + isLowerCase)
 
@@ -88,34 +116,39 @@ var obj=
 
 if (satisfied){
   console.log("I am satisdfied")
-  console.log(makeid(inputlength,obj));
+
+  //call function
+  makePassword(inputlength,obj);
 }
 
 }
 
-function makeid(length,myObj) {
-  console.log(myObj)
-var chracters= ['!"#$%&()*+,-./:;<=>?@[\]^_`{|}~',
-'abcdefghijklmnopqrstuvwxyz',
-'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-'0123456789']
 
-  var joined;
-  
-//need to check here
-if (myObj.isLowerCase || myObj.isUppercase || myObj.isNumeric || myObj.isSpecial_characters){
-  
-  joined = chracters.join(',')
-  console.log("all")
-}
 
+
+//function to Password
+
+function makePassword(mylength,myObj) {
+
+//asign chracters
+var chracters={
+  lower:'abcdefghijklmnopqrstuvwxyz', 
+  upper:'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+  numeric:'0123456789',
+  special:'!"#$%&()*+,-./:;<=>?@[\]^_`{|}~'
+};
+
+
+//join chracters depend on true false list
+  var joined="abcdefghijklmnopqrstuvwxyz";
 
 
   var result           = '';
  
-  var charactersLength = joined.length;
+  // var charactersLength = joined.length;
+  var charactersLength = mylength;
 
-  for ( var i = 0; i < length; i++ ) {
+  for ( var i = 0; i < mylength; i++ ) {
     result += joined.charAt(Math.floor(Math.random() * 
 charactersLength));
  }
